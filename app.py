@@ -24,3 +24,6 @@ def getprofiles():
     x=get_profiles();
     print(x);
     return make_response(jsonify(x), 200)
+
+if __name__ == "__main__":
+ app.run()
