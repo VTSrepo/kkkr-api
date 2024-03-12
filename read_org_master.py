@@ -1,12 +1,13 @@
 import mysql.connector
 import requests
+from os import environ
 
 def get_connection():
-    connection = mysql.connector.connect(host='swastha.clcyg6mwkr6z.ap-south-1.rds.amazonaws.com',
-                                         database='kkkr',
-                                         user='admin',
-                                         password='Vts2022apr',
-                                         port=3306)
+    connection = mysql.connector.connect(host=environ.get('HOST'),
+                                         database=environ.get('DB'),
+                                         user=environ.get('USER'),
+                                         password=environ.get('PASSWORD'),
+                                         port=environ.get('PORT'))
     return connection
 
 def close_connection(connection):
@@ -15,6 +16,7 @@ def close_connection(connection):
 
 def get_org_details():
     try:
+        print(environ.get('HOST'))
         connection = get_connection()
         cursor = connection.cursor()
         sql_select_query = """select * from org_master"""

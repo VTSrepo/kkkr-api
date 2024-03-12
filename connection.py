@@ -1,10 +1,11 @@
 import mysql.connector
-
+from os import environ
 def get_connection():
-    connection = mysql.connector.connect(host='swastha.clcyg6mwkr6z.ap-south-1.rds.amazonaws.com',
-                                         database='kkkr',
-                                         user='admin',
-                                         password='Vts2022apr')
+    connection = mysql.connector.connect(host=environ.get('HOST'),
+                                         database=environ.get('DB'),
+                                         user=environ.get('USER'),
+                                         password=environ.get('PASSWORD'),
+                                         port=environ.get('PORT'))
     return connection
 
 def close_connection(connection):
