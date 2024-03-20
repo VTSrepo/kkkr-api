@@ -1,13 +1,14 @@
+import os
 import mysql.connector
 import requests
 from os import environ
 
 def get_connection():
-    connection = mysql.connector.connect(host=environ.get('HOST'),
-                                         database=environ.get('DB'),
-                                         user=environ.get('USER'),
-                                         password=environ.get('PASSWORD'),
-                                         port=environ.get('PORT'))
+    connection = mysql.connector.connect(host=os.environ.get('KKKR_HOST'),
+                                         database=os.environ.get('KKKR_SCHEMA'),
+                                         user=os.environ.get('KKKR_USER'),
+                                         password=os.environ.get('KKKR_PASSWORD'),
+                                         port=os.environ.get('KKKR_PORT'))
     return connection
 
 def close_connection(connection):

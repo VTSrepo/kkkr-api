@@ -5,6 +5,8 @@ from get_profiles import get_profiles
 from create_profile import create_profile, updateProfile
 from flask import jsonify, make_response
 from flask_cors import CORS
+from dotenv import load_dotenv
+load_dotenv() 
 app = Flask(__name__, static_folder='./web', static_url_path='/')
 CORS(app)
 @app.route("/hello")
